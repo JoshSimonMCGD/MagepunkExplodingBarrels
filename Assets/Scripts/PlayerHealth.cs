@@ -29,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     public Transform respawnPoint;
     private PlayerControllerBasic _controller;
 
+    // Player Damage and Death Check
     public void TakeDamage(int amount)
     {
         if (_isDead) return;
@@ -49,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    // UI connection to Player HP
     private void UpdateHealthUI()
     {
         if (healthBarFill == null) return;
@@ -56,6 +58,7 @@ public class PlayerHealth : MonoBehaviour
         healthBarFill.fillAmount = (float)_currentHealth / maxHealth;
     }
 
+    //Die and respawn Functions. Does not reset scene, only player position and state:
     private void Die()
     {
         Debug.Log("Player died");

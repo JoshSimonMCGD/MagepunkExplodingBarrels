@@ -16,6 +16,7 @@ public class FlammableExplosiveBarrel : MonoBehaviour
 
     private bool _hasExploded = false;
 
+    // Ignite Check
     public void Ignite()
     {
         if (_hasExploded) return;
@@ -41,6 +42,7 @@ public class FlammableExplosiveBarrel : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // VFX Specifications
     private void SpawnExplosionVFX()
     {
         if (explosionVFXPrefab == null) return;
@@ -50,6 +52,7 @@ public class FlammableExplosiveBarrel : MonoBehaviour
         Destroy(vfx, vfxLifetime);
     }
 
+    // Explosion Interaction Check
     private void DoExplosionCheck()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius, hitLayers);

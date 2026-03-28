@@ -22,6 +22,7 @@ public class PlayerIgniteAbility : MonoBehaviour
 
     private float _nextUseTime = 0f;
 
+    //Player ability activation with cooldown
     public void TryActivate()
     {
         if (Time.time < _nextUseTime)
@@ -32,6 +33,7 @@ public class PlayerIgniteAbility : MonoBehaviour
         StartCoroutine(IgniteRoutine(castPosition));
     }
 
+    //Player ability VFX
     private void SpawnPulseVFX(Vector3 castPosition, float radius)
     {
         if (ignitePulseVFXPrefab == null)
@@ -47,6 +49,7 @@ public class PlayerIgniteAbility : MonoBehaviour
         Destroy(vfx, 3f);
     }
 
+    // Creates 3 timed explosions. Aspects are seralized for balance control
     private IEnumerator IgniteRoutine(Vector3 castPosition)
     {
         SpawnPulseVFX(castPosition, pulse1Radius);
@@ -64,6 +67,8 @@ public class PlayerIgniteAbility : MonoBehaviour
     private void DoIgnitePulse(Vector3 castPosition, float radius)
     {
         Collider[] hits = Physics.OverlapSphere(castPosition, radius, hitLayers);
+
+        //Ignite output signal
 
         for (int i = 0; i < hits.Length; i++)
         {

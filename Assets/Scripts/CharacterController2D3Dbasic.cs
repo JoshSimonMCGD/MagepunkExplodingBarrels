@@ -66,6 +66,7 @@ public class PlayerControllerBasic : MonoBehaviour
         HandleExternalVelocity();
         UpdateAnimator();
         
+        // Player AOE Ability check
         if (_abilityAction.WasPressedThisFrame() && _igniteAbility != null)
         {
             _igniteAbility.TryActivate();
@@ -77,6 +78,7 @@ public class PlayerControllerBasic : MonoBehaviour
         _moveInput = _moveAction.ReadValue<Vector2>();
     }
 
+    // Horizontal movement control including air control (serialzied)
     private void HandleHorizontalMovement()
     {
         Vector3 inputDirection = new Vector3(_moveInput.x, 0f, _moveInput.y);
@@ -117,6 +119,7 @@ public class PlayerControllerBasic : MonoBehaviour
         _cc.Move(finalMove * Time.deltaTime);
     }
 
+    // Faces the player the direction of movement
     private void FaceMoveDirection()
     {
         Vector3 flatMove = new Vector3(_horizontalVelocity.x, 0f, _horizontalVelocity.z);
@@ -127,6 +130,7 @@ public class PlayerControllerBasic : MonoBehaviour
         }
     }
 
+    // Modular knockback. Used here for barrel explosions
     public void ApplyKnockback(Vector3 force)
     {
         _externalVelocity += force;
@@ -146,7 +150,7 @@ public class PlayerControllerBasic : MonoBehaviour
 
         Vector3 pushDirection = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
 
-        float pushForce = 2f; // tweak this
+        float pushForce = 2f; // Pushback Force Multiplier
 
         rb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
     }

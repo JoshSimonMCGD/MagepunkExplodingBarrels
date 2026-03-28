@@ -11,6 +11,7 @@ public class TopDownCameraFollow : MonoBehaviour
     [Header("Offset")]
     public Vector3 offset = new Vector3(0f, 0f, -5f);
 
+    // Top Down Camera follow based on x,z
     private void LateUpdate()
     {
         if (target == null) return;
