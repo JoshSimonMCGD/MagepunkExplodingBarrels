@@ -29,6 +29,7 @@ public class PlayerControllerBasic : MonoBehaviour
 
     private InputAction _abilityAction;
     private PlayerIgniteAbility _igniteAbility;
+    private Animator _animator;
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class PlayerControllerBasic : MonoBehaviour
         _moveAction = _input.actions["Move"];
         _jumpAction = _input.actions["Jump"];
         _abilityAction = _input.actions["Ability"];
+        _animator = GetComponentInChildren<Animator>();
     }
 
     private void OnEnable()
@@ -62,6 +64,7 @@ public class PlayerControllerBasic : MonoBehaviour
         ApplyMovement();
         FaceMoveDirection();
         HandleExternalVelocity();
+        UpdateAnimator();
         
         if (_abilityAction.WasPressedThisFrame() && _igniteAbility != null)
         {
@@ -146,5 +149,16 @@ public class PlayerControllerBasic : MonoBehaviour
         float pushForce = 2f; // tweak this
 
         rb.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+    }
+
+    private void UpdateAnimator()
+    {
+        if (_animator == null)
+            return;
+
+        Vector3 flatVelocity = new Vector3(_horizontalVelocity.x, 0f, _horizontalVelocity.z);
+
+        _animator.SetFloat("Speed", flatVelocity.magnitude);
+        _animator.SetBool("IsGrounded", _cc.isGrounded);
     }
 }

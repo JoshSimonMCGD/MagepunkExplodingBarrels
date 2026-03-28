@@ -69,6 +69,12 @@ public class FlammableExplosiveBarrel : MonoBehaviour
 
                 player.ApplyKnockback(direction * knockbackForce);
             }
+
+            PlayerHealth health = hit.GetComponentInParent<PlayerHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(1);
+            }
         }
     }
 }

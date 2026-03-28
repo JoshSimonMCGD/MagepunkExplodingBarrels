@@ -288,10 +288,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 506a9a93706017745b8005f4e2fdf15c, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1041,6 +1041,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1860342787142425728, guid: 4b7c7a515e18d804195c7b4dfbd6b432, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1193671097}
+    - targetCorrespondingSourceObject: {fileID: 1860342787142425728, guid: 4b7c7a515e18d804195c7b4dfbd6b432, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1193671101}
   m_SourcePrefab: {fileID: 100100000, guid: 4b7c7a515e18d804195c7b4dfbd6b432, type: 3}
 --- !u!1001 &764997127
 PrefabInstance:
@@ -1432,6 +1435,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 3
+  deathDelay: 0.28
+  healthBarFill: {fileID: 80890653}
+  respawnDelay: 5
+  respawnPoint: {fileID: 0}
+--- !u!95 &1193671101
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193671087}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c7be20655ea06f44a82bf6a40cf996cd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2682e8a099b89d04a9f1251afe7baeb7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1253465901
 GameObject:
   m_ObjectHideFlags: 0
